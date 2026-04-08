@@ -9,11 +9,12 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-center md:text-left">
-            {logoUrl ? (
-              <img src={logoUrl} alt="Feline's Cakery" className="h-10 w-auto object-contain mb-2" />
-            ) : (
-              <h3 className="text-2xl font-serif font-bold text-foreground mb-2">Feline's Cakery</h3>
-            )}
+            <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
+              {logoUrl && (
+                <img src={logoUrl} alt="Feline's Cakery" className="h-10 w-auto object-contain" />
+              )}
+              <h3 className="text-2xl font-serif font-bold text-foreground">Feline's Cakery</h3>
+            </div>
             <p className="text-muted-foreground text-sm">Luxury Cakes, Made Affordable</p>
           </div>
           <div className="flex items-center gap-6">
