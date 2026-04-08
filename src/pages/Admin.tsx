@@ -4,10 +4,11 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import AdminProducts from "@/components/admin/AdminProducts";
 import AdminTestimonials from "@/components/admin/AdminTestimonials";
-import { Cake, MessageSquare, LogOut } from "lucide-react";
+import AdminUsers from "@/components/admin/AdminUsers";
+import { Cake, MessageSquare, LogOut, Users } from "lucide-react";
 
 const Admin = () => {
-  const [tab, setTab] = useState<"products" | "testimonials">("products");
+  const [tab, setTab] = useState<"products" | "testimonials" | "users">("products");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -47,6 +48,7 @@ const Admin = () => {
   const navItems = [
     { key: "products" as const, label: "Products", icon: Cake },
     { key: "testimonials" as const, label: "Testimonials", icon: MessageSquare },
+    { key: "users" as const, label: "Users", icon: Users },
   ];
 
   return (
@@ -98,7 +100,7 @@ const Admin = () => {
 
       {/* Main content */}
       <main className="flex-1 p-6 md:p-10 mt-14 md:mt-0 overflow-auto">
-        {tab === "products" ? <AdminProducts /> : <AdminTestimonials />}
+        {tab === "products" ? <AdminProducts /> : tab === "testimonials" ? <AdminTestimonials /> : <AdminUsers />}
       </main>
     </div>
   );

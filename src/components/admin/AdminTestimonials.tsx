@@ -40,7 +40,7 @@ const AdminTestimonials = () => {
       }
 
       if (editing) {
-        const update: Record<string, string> = { customer_name: customerName, message };
+        const update: { customer_name: string; message: string; photo_url?: string } = { customer_name: customerName, message };
         if (photo_url) update.photo_url = photo_url;
         const { error } = await supabase.from("testimonials").update(update).eq("id", editing);
         if (error) throw error;
