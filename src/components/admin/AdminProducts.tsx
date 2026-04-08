@@ -40,7 +40,7 @@ const AdminProducts = () => {
       }
 
       if (editing) {
-        const update: Record<string, string> = { name, description };
+        const update: { name: string; description: string; image_url?: string } = { name, description };
         if (image_url) update.image_url = image_url;
         const { error } = await supabase.from("products").update(update).eq("id", editing);
         if (error) throw error;
