@@ -5,10 +5,11 @@ import { toast } from "sonner";
 import AdminProducts from "@/components/admin/AdminProducts";
 import AdminTestimonials from "@/components/admin/AdminTestimonials";
 import AdminUsers from "@/components/admin/AdminUsers";
-import { Cake, MessageSquare, LogOut, Users } from "lucide-react";
+import AdminSettings from "@/components/admin/AdminSettings";
+import { Cake, MessageSquare, LogOut, Users, Settings } from "lucide-react";
 
 const Admin = () => {
-  const [tab, setTab] = useState<"products" | "testimonials" | "users">("products");
+  const [tab, setTab] = useState<"products" | "testimonials" | "users" | "settings">("products");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -49,6 +50,7 @@ const Admin = () => {
     { key: "products" as const, label: "Products", icon: Cake },
     { key: "testimonials" as const, label: "Testimonials", icon: MessageSquare },
     { key: "users" as const, label: "Users", icon: Users },
+    { key: "settings" as const, label: "Settings", icon: Settings },
   ];
 
   return (
@@ -100,7 +102,7 @@ const Admin = () => {
 
       {/* Main content */}
       <main className="flex-1 p-6 md:p-10 mt-14 md:mt-0 overflow-auto">
-        {tab === "products" ? <AdminProducts /> : tab === "testimonials" ? <AdminTestimonials /> : <AdminUsers />}
+        {tab === "products" ? <AdminProducts /> : tab === "testimonials" ? <AdminTestimonials /> : tab === "users" ? <AdminUsers /> : <AdminSettings />}
       </main>
     </div>
   );
