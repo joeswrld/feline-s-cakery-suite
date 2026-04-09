@@ -5,32 +5,81 @@ const Footer = () => {
   const { data: logoUrl } = useSiteLogo();
 
   return (
-    <footer className="py-12 px-4 border-t border-border bg-secondary">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="text-center md:text-left">
-            <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
+    <footer className="bg-[#080503] border-t border-white/5 px-6 py-16">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-3 mb-4">
               {logoUrl && (
-                <img src={logoUrl} alt="Feline's Cakery" className="h-10 w-auto object-contain" />
+                <img src={logoUrl} alt="Feline's Cakery" className="h-8 w-auto object-contain" />
               )}
-              <h3 className="text-2xl font-serif font-bold text-foreground">Feline's Cakery</h3>
+              <div>
+                <p className="text-white font-serif font-bold text-lg">Feline's Cakery</p>
+                <p className="text-rose-400/70 text-xs tracking-widest uppercase">Luxury Cakes</p>
+              </div>
             </div>
-            <p className="text-muted-foreground text-sm">Luxury Cakes, Made Affordable</p>
+            <p className="text-white/40 text-sm leading-relaxed max-w-xs">
+              Handcrafted luxury cakes made affordable for every Nigerian celebration.
+            </p>
           </div>
-          <div className="flex items-center gap-6">
-            <a href="https://instagram.com/Felines.cakery" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a href="mailto:favourbassey859@gmail.com" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
-              <Mail className="w-5 h-5" />
-            </a>
-            <a href="https://wa.me/2349163479043" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="WhatsApp">
-              <MessageCircle className="w-5 h-5" />
-            </a>
+
+          {/* Links */}
+          <div>
+            <p className="text-white/60 text-xs font-semibold tracking-[0.2em] uppercase mb-5">Quick Links</p>
+            <div className="space-y-3">
+              {[
+                { href: "#products", label: "Our Cakes" },
+                { href: "#why-us", label: "Why Feline's" },
+                { href: "#testimonials", label: "Customer Reviews" },
+                { href: "#story", label: "Our Story" },
+              ].map((link, i) => (
+                <a key={i} href={link.href} className="block text-white/45 hover:text-white text-sm transition-colors">
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <p className="text-white/60 text-xs font-semibold tracking-[0.2em] uppercase mb-5">Get in Touch</p>
+            <div className="space-y-4">
+              <a href="https://wa.me/2349163479043" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-white/45 hover:text-white text-sm transition-colors group">
+                <div className="w-9 h-9 rounded-full bg-white/5 group-hover:bg-rose-400/20 flex items-center justify-center transition-colors">
+                  <MessageCircle className="w-4 h-4" />
+                </div>
+                +234 916 347 9043 (WhatsApp)
+              </a>
+              <a href="mailto:favourbassey859@gmail.com"
+                className="flex items-center gap-3 text-white/45 hover:text-white text-sm transition-colors group">
+                <div className="w-9 h-9 rounded-full bg-white/5 group-hover:bg-rose-400/20 flex items-center justify-center transition-colors">
+                  <Mail className="w-4 h-4" />
+                </div>
+                favourbassey859@gmail.com
+              </a>
+              <a href="https://instagram.com/Felines.cakery" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-white/45 hover:text-white text-sm transition-colors group">
+                <div className="w-9 h-9 rounded-full bg-white/5 group-hover:bg-rose-400/20 flex items-center justify-center transition-colors">
+                  <Instagram className="w-4 h-4" />
+                </div>
+                @Felines.cakery
+              </a>
+            </div>
           </div>
         </div>
-        <div className="mt-8 text-center">
-          <p className="text-muted-foreground text-xs">&copy; {new Date().getFullYear()} Feline's Cakery. All rights reserved.</p>
+
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-white/25 text-xs">&copy; {new Date().getFullYear()} Feline's Cakery. All rights reserved.</p>
+          <a
+            href="https://wa.me/2349163479043"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-2.5 bg-rose-400/15 hover:bg-rose-400/25 border border-rose-400/20 text-rose-400 text-sm rounded-full font-medium transition-colors"
+          >
+            💬 Order Now
+          </a>
         </div>
       </div>
     </footer>
