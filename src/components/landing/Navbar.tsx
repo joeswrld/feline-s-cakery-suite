@@ -1,41 +1,67 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useSiteLogo } from "@/hooks/useSiteLogo";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { data: logoUrl } = useSiteLogo();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled ? "bg-[#0d0805]/95 backdrop-blur-xl border-b border-white/5 py-3" : "bg-transparent py-5"
+    }`}>
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-3">
           {logoUrl && (
-            <img src={logoUrl} alt="Feline's Cakery" className="h-10 w-auto object-contain" />
+            <img src={logoUrl} alt="Feline's Cakery" className="h-9 w-auto object-contain" />
           )}
-          <span className="text-xl font-serif font-bold text-foreground">Feline's Cakery</span>
+          <div>
+            <span className="text-white font-serif text-xl font-bold tracking-tight">Feline's Cakery</span>
+            {!logoUrl && <span className="block text-rose-400/70 text-[10px] tracking-[0.25em] uppercase font-medium -mt-0.5">Luxury Cakes</span>}
+          </div>
         </Link>
-        <div className="hidden md:flex items-center gap-8">
-          <a href="#products" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Cakes</a>
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About</a>
+
+        <div className="hidden md:flex items-center gap-10">
+          <a href="#products" className="text-white/70 hover:text-white text-sm font-medium transition-colors tracking-wide">Our Cakes</a>
+          <a href="#why-us" className="text-white/70 hover:text-white text-sm font-medium transition-colors tracking-wide">Why Us</a>
+          <a href="#testimonials" className="text-white/70 hover:text-white text-sm font-medium transition-colors tracking-wide">Reviews</a>
+          <a href="#story" className="text-white/70 hover:text-white text-sm font-medium transition-colors tracking-wide">Our Story</a>
+        </div>
+
+        <div className="hidden md:flex items-center gap-3">
           <a
             href="https://wa.me/2349163479043"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
+            className="flex items-center gap-2 px-5 py-2.5 bg-rose-400 hover:bg-rose-300 text-white rounded-full text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-rose-900/30"
           >
-            Order Now
+            <span>💬</span> Order Now
           </a>
         </div>
-        <button onClick={() => setOpen(!open)} className="md:hidden text-foreground" aria-label="Toggle menu">
+
+        <button onClick={() => setOpen(!open)} className="md:hidden text-white" aria-label="Toggle menu">
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
+
+      {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-background border-t border-border px-4 py-4 space-y-4">
-          <a href="#products" onClick={() => setOpen(false)} className="block text-muted-foreground hover:text-foreground">Cakes</a>
-          <a href="https://wa.me/2349163479043" target="_blank" rel="noopener noreferrer" className="block text-primary font-medium">Order Now</a>
+        <div className="md:hidden bg-[#0d0805]/98 backdrop-blur-xl border-t border-white/10 px-6 py-6 space-y-4">
+          <a href="#products" onClick={() => setOpen(false)} className="block text-white/80 hover:text-white py-2 text-lg font-medium border-b border-white/10">Our Cakes</a>
+          <a href="#why-us" onClick={() => setOpen(false)} className="block text-white/80 hover:text-white py-2 text-lg font-medium border-b border-white/10">Why Us</a>
+          <a href="#testimonials" onClick={() => setOpen(false)} className="block text-white/80 hover:text-white py-2 text-lg font-medium border-b border-white/10">Reviews</a>
+          <a href="#story" onClick={() => setOpen(false)} className="block text-white/80 hover:text-white py-2 text-lg font-medium border-b border-white/10">Our Story</a>
+          <a href="https://wa.me/2349163479043" target="_blank" rel="noopener noreferrer" className="block w-full text-center px-6 py-3 bg-rose-400 text-white rounded-full font-semibold mt-4">
+            💬 Order on WhatsApp
+          </a>
         </div>
       )}
     </nav>
