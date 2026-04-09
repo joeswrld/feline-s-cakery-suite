@@ -10,12 +10,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0d0805]/60 via-transparent to-transparent" />
       </div>
 
-      {/* Floating trust badge top-right */}
-      <div className="absolute top-28 right-6 md:right-12 z-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3 text-white text-center hidden md:block">
-        <p className="text-2xl font-bold leading-none">500+</p>
-        <p className="text-xs opacity-80 mt-0.5">Happy Customers</p>
-      </div>
-
+      
       {/* Main content */}
       <div className="relative z-10 px-6 md:px-16 max-w-3xl">
         <div className="mb-5 flex items-center gap-3">
