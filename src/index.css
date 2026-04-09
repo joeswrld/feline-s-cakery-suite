@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,78 +6,44 @@
 
 @layer base {
   :root {
-    --background: 30 50% 98%;
-    --foreground: 20 20% 20%;
+    --background: 20 15% 5%;
+    --foreground: 30 30% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 20 20% 20%;
+    --card: 20 15% 7%;
+    --card-foreground: 30 30% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 20% 20%;
+    --popover: 20 15% 7%;
+    --popover-foreground: 30 30% 95%;
 
-    --primary: 350 60% 75%;
+    --primary: 350 60% 68%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 50% 95%;
-    --secondary-foreground: 20 20% 25%;
+    --secondary: 20 15% 10%;
+    --secondary-foreground: 30 30% 85%;
 
-    --muted: 30 30% 94%;
-    --muted-foreground: 20 10% 50%;
+    --muted: 20 15% 12%;
+    --muted-foreground: 20 10% 55%;
 
-    --accent: 30 50% 65%;
+    --accent: 350 60% 68%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 30% 88%;
-    --input: 30 30% 88%;
-    --ring: 350 60% 75%;
+    --border: 20 15% 15%;
+    --input: 20 15% 15%;
+    --ring: 350 60% 68%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    --sidebar-background: 30 50% 97%;
-    --sidebar-foreground: 20 20% 25%;
-    --sidebar-primary: 350 60% 75%;
+    --sidebar-background: 20 15% 5%;
+    --sidebar-foreground: 30 30% 85%;
+    --sidebar-primary: 350 60% 68%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 30 50% 93%;
-    --sidebar-accent-foreground: 20 20% 25%;
-    --sidebar-border: 30 30% 88%;
-    --sidebar-ring: 350 60% 75%;
-
-    --gold: 30 50% 65%;
-    --blush: 350 60% 92%;
-    --cream: 30 50% 98%;
-  }
-
-  .dark {
-    --background: 20 20% 8%;
-    --foreground: 30 30% 95%;
-    --card: 20 20% 10%;
-    --card-foreground: 30 30% 95%;
-    --popover: 20 20% 10%;
-    --popover-foreground: 30 30% 95%;
-    --primary: 350 60% 75%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 20 20% 15%;
-    --secondary-foreground: 30 30% 95%;
-    --muted: 20 20% 15%;
-    --muted-foreground: 30 15% 60%;
-    --accent: 30 50% 65%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 20 20% 18%;
-    --input: 20 20% 18%;
-    --ring: 350 60% 75%;
-    --sidebar-background: 20 20% 8%;
-    --sidebar-foreground: 30 30% 95%;
-    --sidebar-primary: 350 60% 75%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 20 20% 15%;
-    --sidebar-accent-foreground: 30 30% 95%;
-    --sidebar-border: 20 20% 18%;
-    --sidebar-ring: 350 60% 75%;
+    --sidebar-accent: 20 15% 10%;
+    --sidebar-accent-foreground: 30 30% 85%;
+    --sidebar-border: 20 15% 14%;
+    --sidebar-ring: 350 60% 68%;
   }
 }
 
@@ -87,26 +53,34 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    background-color: #0d0805;
+    color: #f5f0ea;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
   }
+}
+
+/* Admin pages stay light */
+.admin-wrapper {
+  background: hsl(30 50% 97%);
+  color: hsl(20 20% 20%);
 }
 
 @layer utilities {
   .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+    animation: fadeIn 0.9s ease-out forwards;
   }
 
   .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 0.9s ease-out forwards;
   }
 
-  .animate-fade-in-delay {
-    animation: fadeIn 0.8s ease-out 0.3s forwards;
-    opacity: 0;
+  .font-serif {
+    font-family: 'Cormorant Garamond', serif;
   }
 }
 
@@ -116,6 +90,6 @@
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
